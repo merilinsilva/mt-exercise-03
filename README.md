@@ -53,7 +53,7 @@ The training process can be interrupted at any time, and the best checkpoint wil
        `OMP_NUM_THREADS=$num_threads python $joeynmt_dir/joeynmt/training.py $configs/deen_transformer_regular.yaml \
         2> $logs/$model_name/out_post > $logs/$model_name/err_post`
 
-       `grep "Evaluation result (greedy)" $logs/$model_name/out_post > $logs/$model_name/validation_metrics_post.log`
+   `grep "Evaluation result (greedy)" $logs/$model_name/out_post > $logs/$model_name/validation_metrics_post.log`
 
    Please change the out_post, err_post and validation..._post.log according to if you are training the pre or post-norm model.
 
