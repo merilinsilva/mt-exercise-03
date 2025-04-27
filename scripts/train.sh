@@ -1,29 +1,26 @@
 #! /bin/bash
 
-scripts=$(dirname "$0")
-base=$scripts/..
+base=/Users/merilinsilva/Documents/SemestersUZH/4thSem/MT/exercises/msousa_spareek_mt_exercise03
+
+joeynmt_dir="$base/joeynmt"  
+
+export PYTHONPATH=$joeynmt_dir:$PYTHONPATH
 
 models=$base/models
-configs=$base/configs
-
-mkdir -p $models
-
+configs=$base/mt-exercise-03/configs
+logs=$base/logs
 num_threads=10
-#device=0
+model_name=transformer_deen
 
-# measure time
+
 
 SECONDS=0
 
-logs=$base/logs
 
-model_name=deen_transformer_regular
+OMP_NUM_THREADS=$num_threads python $joeynmt_dir/joeynmt/training.py $configs/deen_transformer_regular.yaml \
+    2> $logs/$model_name/out_post > $logs/$model_name/err_post
 
-mkdir -p $logs
-
-mkdir -p $logs/$model_name
-
-OMP_NUM_THREADS=$num_threads python -m joeynmt train $configs/$model_name.yaml > $logs/$model_name/out 2> $logs/$model_name/err
+grep "Evaluation result (greedy)" $logs/$model_name/out_post > $logs/$model_name/validation_metrics_post.log
 
 echo "time taken:"
 echo "$SECONDS seconds"
