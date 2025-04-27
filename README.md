@@ -36,33 +36,35 @@ Train a model:
 
 The training process can be interrupted at any time, and the best checkpoint will always be saved. It is also possible to continue training from there later on.
 
-# Steps for Windows users
+# Instruction by our team
 
-This repo relies on Bash scripts (.sh files), which do not run natively on Windows (CMD or PowerShell).  
-Here are two ways to make it work:
+## Directory changes that need to be made
 
-Option 1: Use WSL (Windows Subsystem for Linux)
-Enable WSL and install Ubuntu: `wsl --install`
+### mt-exercise-03/configs/deen_transformer_regular.yaml
 
-Open Ubuntu from your Start menu.
+1. Under data please change the directories `train, dev and test` to your according full path to the files in the folder `data`
+2. Also under data change the full path of `voc_file` under `shared_models` and also of `codes` the full path that ends with `joeynmt/test/data/toy/bpe200.codes` -- do this for src and trg
+3. In `training` change the `model_dir` to the current directory of the model (depends on it being pre or post), e.g. ending in `configs/models/transformer_model_post`
 
-Inside the Ubuntu terminal, follow the exact same steps as shown above for macOS/Linux:
-```
-git clone https://github.com/marpng/mt-exercise-4
-cd mt-exercise-4
-./scripts/make_virtualenv.sh
-./scripts/download_install_packages.sh
-./scripts/train.sh
-```     
+### mt-exercise-03/scripts/train.sh
 
-Option 2: Manually run steps without shell scripts
-If you can't use WSL, you can recreate the process manually using PowerShell or CMD
-Create and activate a virtual environment:
-```
-python -m venv venv
-.\venv\Scripts\activate
-pip install -r requirements.txt
-```
-Manually download and install Moses and other dependencies (you'll need to look inside scripts/download_install_packages.sh to replicate its steps).
+1. We set the base path to the full path of our main repository that included `mt-exercise-03`, `joeynmt`, `venvs`, and later on `logs`. So change it to your main directory.
+2. In these lines:
+       `OMP_NUM_THREADS=$num_threads python $joeynmt_dir/joeynmt/training.py $configs/deen_transformer_regular.yaml \
+        2> $logs/$model_name/out_post > $logs/$model_name/err_post`
 
-Run the training logic by manually executing the code inside train.sh, or porting it to a Python script or notebook.
+       `grep "Evaluation result (greedy)" $logs/$model_name/out_post > $logs/$model_name/validation_metrics_post.log`
+
+   Please change the out_post, err_post and validation..._post.log according to if you are training the pre or post-norm model.
+
+### mt-exercise-03/scripts/log_table.sh
+1. Change the base path to the same one as in `train.sh`
+
+### mt-exercise-03/scripts/plot_line_chart.py
+1. On line 17 and 61 change the paths accordingly
+
+## How to solve the exercise
+1. After making sure all the instructions are followed in the README.md of the joeynmt repository on github change the `layer_norm:` argument in the model's encoder and decoder in `mt-exercise-03/configs/deen_transformer_regular.yaml` to "post" or "pre"
+2. Change the the directories in the train.sh as mentioned before and then from the main directory (outside of the `mt-exercise-03` run the command `YOURPATH/mt-exercise-03/scripts/train.sh`. Do this for pre and post norm.
+3. Under `scripts` you will find the bash file `log_table.sh`, run the file with its full path to create the `final_table.log`
+4. In the same folder you will find `plot_line_chart.py`, run `/usr/local/bin/python3 YOURPATH/mt-exercise-03/scripts/plot_line_chart.py` to create the final plot.
