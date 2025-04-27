@@ -138,7 +138,7 @@ Please make sure your structure is as follows:
 1. On line 17 and 61 change the paths accordingly
 
 ## How to solve the exercise
-1. After making sure all the instructions are followed in the README.md of the joeynmt repository on github change the `layer_norm:` argument in the model's encoder and decoder in `mt-exercise-03/configs/deen_transformer_regular.yaml` to "post" or "pre"
+1. After making sure the directories are as described and joeynmt is cloned, change the `layer_norm:` argument in the model's encoder and decoder in `mt-exercise-03/configs/deen_transformer_regular.yaml` to "post" or "pre"
 2. Change the the directories in the train.sh as mentioned before and then from the main directory (outside of the `mt-exercise-03` run the command `YOURPATH/mt-exercise-03/scripts/train.sh`. Do this for pre and post norm.
 3. Under `scripts` you will find the bash file `log_table.sh`, run the file with its full path to create the `final_table.log`
 4. In the same folder you will find `plot_line_chart.py`, run `/usr/local/bin/python3 YOURPATH/mt-exercise-03/scripts/plot_line_chart.py` to create the final plot.
