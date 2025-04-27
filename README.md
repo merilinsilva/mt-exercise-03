@@ -38,6 +38,80 @@ The training process can be interrupted at any time, and the best checkpoint wil
 
 # Instruction by our team
 
+## Directory structure
+Please make sure your structure is as follows:
+```
+└── 📁msousa_spareek_mt_exercise03
+    └── 📁joeynmt
+        └── .gitattributes
+        └── 📁.github
+        └── .gitignore
+        └── .pylintrc
+        └── .readthedocs.yml
+        └── .style.yapf
+        └── CODE_OF_CONDUCT.md
+        └── 📁configs
+        └── 📁docs
+        └── hubconf.py
+        └── joey-small.png
+        └── joey2-small.png
+        └── 📁joeynmt
+        └── 📁joeynmt.egg-info
+        └── LICENSE
+        └── Makefile
+        └── 📁notebooks
+        └── README.md
+        └── requirements.txt
+        └── 📁scripts
+        └── setup.cfg
+        └── setup.py
+        └── 📁test
+    └── 📁logs
+        └── final_table.log
+        └── 📁transformer_deen
+            └── baseline.log
+            └── err_post
+            └── err_pre
+            └── final_table.log
+            └── out_post
+            └── out_pre
+            └── validation_metrics_baseline.log
+            └── validation_metrics_post.log
+            └── validation_metrics_pre.log
+    └── 📁mt-exercise-03
+        └── 📁configs
+            └── deen_transformer_regular.yaml
+            └── 📁models
+                └── 📁transformer_model_post  
+                    └── 📁tensorboard
+                    └── train.log
+                    └── trg_vocab.txt
+                    └── validations.txt
+                └── 📁transformer_model_pre
+        └── 📁data
+            └── .DS_Store
+            └── codes3200.bpe
+            └── dev.de
+            └── dev.en
+            └── test.de
+            └── test.en
+            └── train.de
+            └── train.en
+        └── model_ppl_plot.png
+        └── README.md
+        └── 📁scripts
+            └── download_moses.sh
+            └── download_preprocessed_data.sh
+            └── log_table.sh
+            └── make_virtualenv.sh
+            └── plot_line_chart.py
+            └── train.sh
+        └── 📁shared_models
+            └── joint-vocab.txt
+    └── 📁venvs
+    └── MT25_exercise3.pdf
+```
+
 ## Directory changes that need to be made
 
 ### mt-exercise-03/configs/deen_transformer_regular.yaml
