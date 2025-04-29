@@ -1,9 +1,8 @@
-'''
-Authors:
+#Authors:
 
-Merilin Sousa Silva
-Shubhi Pareek
-'''
+#Merilin Sousa Silva
+#Shubhi Pareek
+
 
 
 # Define the directories

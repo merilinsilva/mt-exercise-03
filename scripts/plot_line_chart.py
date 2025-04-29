@@ -48,7 +48,7 @@ max_ppl = np.ceil(all_ppl.max())
 start = 5 * int(min_ppl // 5)
 end = 5 * int((max_ppl // 5) + 1)
 
-plt.gca().invert_yaxis()
+
 plt.yticks(np.arange(start, end + 1, 5))
 
 plt.xlabel('Step Count')
