@@ -56,7 +56,7 @@ training:
   logging_freq: 100
   eval_metric: ["bleu"]
   model_dir: "/Users/merilinsilva/Documents/SemestersUZH/4thSem/MT/exercises/msousa_spareek_mt_exercise03/mt-exercise-03/configs/models/transformer_model_post"
-  overwrite: False
+  overwrite: True
   shuffle: True
   device: "mps"
   use_cuda: True
